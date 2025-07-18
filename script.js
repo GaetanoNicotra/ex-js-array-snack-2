@@ -98,3 +98,35 @@ console.log('Somma delle età:', agesSum);
 // calcolo dell'età media 
 const agesMedia = agesSum / books.length;
 console.log('Età media:', agesMedia)
+
+
+// SNACK 5 (Bonus)
+
+// recupero dei libri
+const ids = [2, 13, 7, 21, 19];
+
+const getBooks = async (ids) => {
+    const books = await Promise.all(ids.map((i) =>
+        fetch(`http://localhost:3333/books/${i}`).then(res => res.json()))
+    );
+    return books;
+};
+
+getBooks(ids).then(books => {
+    console.log('Tutti i libri:', books);
+});
+
+
+// SNACK 6 (Bonus)
+
+// verifico se c'è almeno un libro disponibile
+const areThereAvailableBooks = books.some((b) => b.available === true);
+console.log("C'è almeno un libro disponibile?", areThereAvailableBooks)
+
+// ordino i libri per prezzo in modo crescente
+const booksByPrice = books.sort((a, b) => parseFloat(a.price) - parseFloat(b.price));
+console.log('Libri ordinati per prezzo:', booksByPrice)
+
+// ordino per disponibilità
+booksByPrice.sort((a, b) => b.available - a.available);
+console.log('Libri ordinati disponibilità:', booksByPrice);
