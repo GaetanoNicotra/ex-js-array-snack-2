@@ -81,3 +81,20 @@ console.log('Autori', authors)
 // verifico se gli autori sono maggiorenni
 const areAuthorsAdults = authors.every(a => a.age > 18);
 console.log('Tutti gli autori sono maggiorenni?', areAuthorsAdults);
+
+
+// SNACK 4 
+
+// recupero le età degli autori
+const ages = books.map(b => b.author.age)
+console.log('Età degli autori:', ages)
+
+// calcolo la somma delle età
+const agesSum = books.reduce((acc, curr) => {
+    return acc + curr.author.age;
+}, 0)
+console.log('Somma delle età:', agesSum);
+
+// calcolo dell'età media 
+const agesMedia = agesSum / books.length;
+console.log('Età media:', agesMedia)
