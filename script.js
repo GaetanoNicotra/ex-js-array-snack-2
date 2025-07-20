@@ -130,3 +130,20 @@ console.log('Libri ordinati per prezzo:', booksByPrice)
 // ordino per disponibilità
 booksByPrice.sort((a, b) => b.available - a.available);
 console.log('Libri ordinati disponibilità:', booksByPrice);
+
+
+// SNACK 7 (Bonus)
+
+const tagCounts = books.reduce((acc, b) => {
+    b.tags.forEach(tag => {
+        if (acc[tag]) {
+            acc[tag]++
+        }
+        else {
+            acc[tag] = 1;
+        }
+    })
+    return acc;
+}, {})
+
+console.log('contatore di tag:', tagCounts);
